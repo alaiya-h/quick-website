@@ -24,6 +24,10 @@
       --lavender-deep: #b9a9ff;
       --coral: #ef6b50;
       --line: #eae1ff;
+      --bg-base: #f7f3ff;
+      --bg-soft: #efe9ff;
+      --bg-strong: #ddd1ff;
+      --hero-glow: rgba(181, 168, 255, 0.65);
       --serif: "Playfair Display", Georgia, serif;
       --sans: "DM Sans", sans-serif;
       --scroll-shift: 0px;
@@ -33,7 +37,7 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: radial-gradient(circle at top, #201a36 0%, #100d1c 43%, #090a12 100%);
+      background: linear-gradient(180deg, #f7f4ff 0%, #f1ebff 35%, #faf7ff 100%);
       color: var(--ink);
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
@@ -49,6 +53,7 @@
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
+      opacity: 0.9;
     }
     .space-layer {
       position: absolute;
@@ -59,29 +64,29 @@
     }
     .space-layer.nebula {
       background:
-        radial-gradient(circle at 20% 25%, rgba(150,130,255,0.28), transparent 24%),
-        radial-gradient(circle at 68% 18%, rgba(110,208,255,0.18), transparent 20%),
-        radial-gradient(circle at 65% 70%, rgba(255,162,197,0.15), transparent 26%);
-      filter: blur(10px);
+        radial-gradient(circle at 20% 25%, rgba(181,168,255,0.24), transparent 24%),
+        radial-gradient(circle at 68% 18%, rgba(143,211,255,0.14), transparent 20%),
+        radial-gradient(circle at 65% 70%, rgba(255,177,208,0.12), transparent 26%);
+      filter: blur(12px);
       transform: translateY(calc(var(--scroll-shift) * .25));
     }
     .space-layer.stars {
       background-image:
-        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.9), transparent),
-        radial-gradient(2px 2px at 30% 40%, rgba(196,214,255,0.8), transparent),
-        radial-gradient(1.5px 1.5px at 50% 30%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(2px 2px at 75% 18%, rgba(255,255,255,0.9), transparent),
-        radial-gradient(1.5px 1.5px at 82% 62%, rgba(201,214,255,0.9), transparent),
-        radial-gradient(2px 2px at 90% 28%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(2px 2px at 18% 76%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1.5px 1.5px at 60% 85%, rgba(255,255,255,0.9), transparent),
-        radial-gradient(2px 2px at 40% 60%, rgba(255,255,255,0.7), transparent),
-        radial-gradient(2px 2px at 70% 72%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(2px 2px at 52% 52%, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1.5px 1.5px at 15% 50%, rgba(255,255,255,0.8), transparent);
+        radial-gradient(2px 2px at 10% 20%, rgba(95,78,150,0.2), transparent),
+        radial-gradient(2px 2px at 30% 40%, rgba(142,127,209,0.22), transparent),
+        radial-gradient(1.5px 1.5px at 50% 30%, rgba(95,78,150,0.18), transparent),
+        radial-gradient(2px 2px at 75% 18%, rgba(142,127,209,0.14), transparent),
+        radial-gradient(1.5px 1.5px at 82% 62%, rgba(95,78,150,0.18), transparent),
+        radial-gradient(2px 2px at 90% 28%, rgba(142,127,209,0.18), transparent),
+        radial-gradient(2px 2px at 18% 76%, rgba(95,78,150,0.14), transparent),
+        radial-gradient(1.5px 1.5px at 60% 85%, rgba(142,127,209,0.16), transparent),
+        radial-gradient(2px 2px at 40% 60%, rgba(95,78,150,0.16), transparent),
+        radial-gradient(2px 2px at 70% 72%, rgba(142,127,209,0.16), transparent),
+        radial-gradient(2px 2px at 52% 52%, rgba(95,78,150,0.12), transparent),
+        radial-gradient(1.5px 1.5px at 15% 50%, rgba(142,127,209,0.16), transparent);
       background-repeat: repeat;
       background-size: 100% 100%;
-      opacity: 0.9;
+      opacity: 0.75;
       transform: translateY(calc(var(--scroll-shift) * 0.7));
     }
     .space-layer.planet {
@@ -89,9 +94,9 @@
       height: 52vw;
       max-height: 760px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), rgba(176,176,255,0.5) 25%, rgba(88,77,158,0.8) 44%, rgba(30,18,49,0.96) 70%);
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(201,191,255,0.62) 23%, rgba(130,114,216,0.78) 48%, rgba(83,70,122,0.8) 70%);
       filter: blur(3px);
-      box-shadow: 0 0 50px rgba(142, 121, 255, 0.38);
+      box-shadow: 0 0 55px rgba(188, 171, 255, 0.28);
       transform: translateY(calc(var(--scroll-shift) * 0.35));
     }
 
@@ -101,8 +106,8 @@
       justify-content: center;
       min-height: 34px;
       padding: 7px 16px;
-      background: linear-gradient(90deg, #1d2f3d 0%, #392d4b 100%);
-      color: #fff;
+      background: linear-gradient(90deg, #e9e0ff 0%, #d8cbff 100%);
+      color: #41385e;
       text-align: center;
       font-size: 10px;
       font-weight: 600;
@@ -119,15 +124,15 @@
       align-items: center;
       min-height: 72px;
       padding: 0 5.5%;
-      background: rgba(13, 12, 20, 0.16);
+      background: rgba(255, 255, 255, 0.42);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(186, 169, 255, 0.24);
+      border-bottom: 1px solid rgba(131, 110, 196, 0.18);
     }
     .nav-links, .header-actions { display: flex; align-items: center; gap: 27px; }
-    .nav-links a, .header-actions button { font-size: 12px; font-weight: 500; color: #f7f3ff; }
+    .nav-links a, .header-actions button { font-size: 12px; font-weight: 500; color: #433b5f; }
     .nav-links a { transition: color .2s ease; }
-    .nav-links a:hover { color: #d8c8ff; }
-    .wordmark { font-family: var(--serif); font-size: 31px; line-height: 1; letter-spacing: .02em; color: #fff; }
+    .nav-links a:hover { color: #715dce; }
+    .wordmark { font-family: var(--serif); font-size: 31px; line-height: 1; letter-spacing: .02em; color: #2f2544; }
     .header-actions { justify-content: flex-end; gap: 18px; }
     .icon-button {
       display: inline-flex;
@@ -139,7 +144,7 @@
       border: 0;
       background: transparent;
       cursor: pointer;
-      color: #fff;
+      color: #433b5f;
     }
     .bag-trigger { font-size: 12px; }
     .bag-count {
@@ -148,8 +153,8 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: rgba(196, 179, 255, 0.9);
-      color: #1a1830;
+      background: rgba(155, 136, 255, 0.9);
+      color: #ffffff;
       font-size: 10px;
       font-weight: 700;
     }
@@ -158,14 +163,14 @@
       width: 0;
       padding: 7px 0;
       border: 0;
-      border-bottom: 1px solid rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(67, 59, 95, 0.9);
       outline: 0;
       background: transparent;
-      color: #fff;
+      color: #2f2544;
       opacity: 0;
       transition: width .25s ease, opacity .25s ease;
     }
-    .search-wrap input::placeholder { color: rgba(255,255,255,0.7); }
+    .search-wrap input::placeholder { color: rgba(67, 59, 95, 0.7); }
     .search-wrap.is-open input { width: min(180px, 28vw); opacity: 1; }
     .mobile-menu { display: none; }
 
@@ -177,16 +182,16 @@
       min-height: clamp(490px, 58vw, 690px);
       overflow: hidden;
       isolation: isolate;
-      background: linear-gradient(90deg, rgba(13, 11, 22, 0.82), rgba(30, 21, 43, 0.44) 54%, rgba(30, 21, 43, 0.12));
-      color: #fff;
+      background: linear-gradient(120deg, rgba(193, 179, 255, 0.9) 0%, rgba(232, 226, 255, 0.9) 38%, rgba(255,255,255,0.82) 100%);
+      color: #2a2341;
       border-radius: 0 0 32px 32px;
-      box-shadow: inset 0 0 60px rgba(12, 12, 26, 0.55);
+      box-shadow: inset 0 0 60px rgba(165, 153, 234, 0.18);
     }
     .hero::before {
       position: absolute;
       z-index: -1;
       inset: 0;
-      background: linear-gradient(90deg, rgba(9, 9, 15, 0.7) 0%, rgba(12, 12, 22, 0.35) 45%, rgba(12, 12, 22, 0.08) 100%);
+      background: linear-gradient(90deg, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.04) 100%);
       content: "";
     }
     .hero-content { width: min(590px, 54%); margin-left: 10%; padding: 72px 0; animation: rise-in .7s ease both; }
@@ -199,11 +204,11 @@
       font-weight: 700;
       letter-spacing: .16em;
       text-transform: uppercase;
-      color: #e6d9ff;
+      color: #5b5092;
     }
     .eyebrow::before { width: 23px; height: 1px; background: currentColor; content: ""; }
-    .hero h1 { max-width: 570px; margin: 0; font-family: var(--serif); font-size: clamp(56px, 7.4vw, 100px); font-weight: 500; line-height: .99; color: #faf7ff; }
-    .hero-copy { max-width: 380px; margin: 23px 0 29px; color: rgba(255,255,255,.88); font-size: 14px; line-height: 1.7; }
+    .hero h1 { max-width: 570px; margin: 0; font-family: var(--serif); font-size: clamp(56px, 7.4vw, 100px); font-weight: 500; line-height: .99; color: #2d2544; }
+    .hero-copy { max-width: 380px; margin: 23px 0 29px; color: rgba(45, 37, 68, 0.8); font-size: 14px; line-height: 1.7; }
     .button-primary {
       display: inline-flex;
       align-items: center;
@@ -211,9 +216,9 @@
       gap: 13px;
       min-height: 49px;
       padding: 0 22px;
-      border: 1px solid rgba(191, 175, 255, 0.9);
-      background: rgba(191, 175, 255, 0.25);
-      color: #fff;
+      border: 1px solid rgba(111, 94, 180, 0.45);
+      background: rgba(255, 255, 255, 0.7);
+      color: #2c2542;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .06em;
@@ -221,17 +226,17 @@
       cursor: pointer;
       border-radius: 999px;
       transition: background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
-      box-shadow: 0 10px 25px rgba(145, 120, 255, 0.18);
+      box-shadow: 0 10px 25px rgba(147, 125, 231, 0.16);
       backdrop-filter: blur(8px);
     }
-    .button-primary:hover { transform: translateY(-2px); border-color: #d7caff; background: rgba(191, 175, 255, 0.38); box-shadow: 0 14px 28px rgba(141, 120, 255, 0.22); }
+    .button-primary:hover { transform: translateY(-2px); border-color: rgba(103, 90, 176, 0.8); background: rgba(255, 255, 255, 0.9); box-shadow: 0 14px 28px rgba(147, 125, 231, 0.2); }
     .button-primary svg { width: 15px; height: 15px; }
-    .hero-note { position: absolute; right: 5.5%; bottom: 32px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+    .hero-note { position: absolute; right: 5.5%; bottom: 32px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(45, 37, 68, 0.72); }
 
-    .values { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.2); position: relative; z-index: 1; }
-    .value-item { display: flex; align-items: center; justify-content: center; gap: 11px; min-height: 76px; padding: 12px; font-size: 11px; font-weight: 600; color: #f0ebff; }
-    .value-item + .value-item { border-left: 1px solid rgba(217,208,255,0.25); }
-    .value-item svg { width: 17px; height: 17px; color: #d9d0ff; }
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.48); position: relative; z-index: 1; }
+    .value-item { display: flex; align-items: center; justify-content: center; gap: 11px; min-height: 76px; padding: 12px; font-size: 11px; font-weight: 600; color: #413a5c; }
+    .value-item + .value-item { border-left: 1px solid rgba(130, 112, 199, 0.18); }
+    .value-item svg { width: 17px; height: 17px; color: #705cc6; }
 
     .shop-section { padding: 91px 7% 105px; position: relative; z-index: 1; }
     .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 33px; }
@@ -260,7 +265,7 @@
     .product-image-wrap { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: #e8e9e2; border-radius: 22px 22px 0 0; }
     .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
     .product-card:hover .product-image { transform: scale(1.045); }
-    .product-tag { position: absolute; top: 12px; left: 12px; padding: 7px 9px; background: var(--lavender); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 999px; }
+    .product-tag { position: absolute; top: 12px; left: 12px; padding: 7px 9px; background: var(--lavender); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 999px; color: #2a2242; }
     .favorite-button {
       position: absolute;
       top: 9px;
@@ -284,23 +289,23 @@
     .product-title { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.4; }
     .product-price { flex: 0 0 auto; font-size: 12px; font-weight: 600; }
     .product-detail { margin: 5px 0 11px; color: var(--muted); font-size: 10px; line-height: 1.5; }
-    .add-button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 38px; padding: 0 11px; border: 1px solid #d9ddd5; background: transparent; font-size: 11px; font-weight: 600; letter-spacing: .03em; cursor: pointer; border-radius: 999px; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease; }
+    .add-button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 38px; padding: 0 11px; border: 1px solid #d9ddd5; background: transparent; font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; border-radius: 999px; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease; }
     .add-button:hover { border-color: var(--green); background: var(--green); color: #fff; transform: translateY(-1px); }
     .add-button svg { width: 14px; height: 14px; }
     .empty-state { grid-column: 1 / -1; padding: 65px 15px; color: var(--muted); text-align: center; }
 
-    .newsletter { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; padding: 51px 9%; background: linear-gradient(135deg, rgba(128,111,200,0.92), rgba(209,199,255,0.9)); color: var(--green-dark); border-radius: 28px 28px 0 0; position: relative; z-index: 1; }
+    .newsletter { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; padding: 51px 9%; background: linear-gradient(135deg, rgba(214, 200, 255, 0.94), rgba(242, 237, 255, 0.9)); color: #2a2341; }
     .newsletter h2 { margin: 0 0 8px; font-family: var(--serif); font-size: 34px; font-weight: 500; }
-    .newsletter p { margin: 0; color: rgba(24,59,46,.72); font-size: 11px; }
-    .newsletter-form { display: flex; width: min(380px, 38vw); border-bottom: 1px solid rgba(24,59,46,.4); border-radius: 999px; }
+    .newsletter p { margin: 0; color: rgba(42,35,65,.72); font-size: 11px; }
+    .newsletter-form { display: flex; width: min(380px, 38vw); border-bottom: 1px solid rgba(42,35,65,.4); border-radius: 999px; }
     .newsletter-form input { flex: 1; min-width: 0; padding: 12px 14px; border: 0; outline: 0; background: transparent; color: var(--green-dark); font-size: 11px; border-radius: 999px; }
-    .newsletter-form input::placeholder { color: rgba(24,59,46,.7); }
+    .newsletter-form input::placeholder { color: rgba(42,35,65,.7); }
     .newsletter-form button { padding: 0 3px 0 13px; border: 0; background: transparent; color: var(--green-dark); font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; }
     .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 27px 7%; color: var(--muted); font-size: 10px; position: relative; z-index: 1; }
     .footer-brand { color: var(--ink); font-family: var(--serif); font-size: 22px; }
     .footer-links { display: flex; gap: 19px; }
 
-    .bag-dialog { position: fixed; inset: 0 0 0 auto; width: min(440px, 100%); max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 26px; border: 0; background: rgba(245,241,255,0.96); color: var(--ink); box-shadow: -10px 0 35px rgba(62, 48, 73, 0.15); border-radius: 26px 0 0 26px; }
+    .bag-dialog { position: fixed; inset: 0 0 0 auto; width: min(440px, 100%); max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 26px; border: 0; background: rgba(247,243,255,.98); color: var(--ink); box-shadow: -18px 0 42px rgba(58,42,88,.14); }
     .bag-dialog[open] { animation: slide-in .25s ease both; }
     .bag-dialog::backdrop { background: rgba(17, 29, 23, .42); }
     .bag-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 19px; border-bottom: 1px solid var(--line); }
@@ -317,7 +322,7 @@
     .bag-footer { position: absolute; right: 26px; bottom: 26px; left: 26px; }
     .bag-subtotal { display: flex; justify-content: space-between; padding: 16px 0; border-top: 1px solid var(--line); font-size: 12px; font-weight: 600; }
     .checkout-button { width: 100%; min-height: 49px; border: 0; background: var(--green); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; border-radius: 999px; }
-    .toast { position: fixed; z-index: 5; right: 22px; bottom: 22px; padding: 13px 17px; background: var(--ink); color: #fff; font-size: 11px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease; border-radius: 999px; }
+    .toast { position: fixed; z-index: 5; right: 22px; bottom: 22px; padding: 13px 17px; background: var(--ink); color: #fff; font-size: 11px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease; border-radius: 12px; }
     .toast.is-visible { opacity: 1; transform: translateY(0); }
 
     @keyframes rise-in { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
@@ -339,14 +344,14 @@
       .header-actions { gap: 13px; }
       .search-wrap.is-open input { width: min(120px, 33vw); }
       .bag-trigger span:first-of-type { display: none; }
-      .hero { min-height: 590px; align-items: end; background: linear-gradient(180deg, rgba(8,9,18,0.46), rgba(8,9,18,0.62)); }
+      .hero { min-height: 590px; align-items: end; background: linear-gradient(180deg, rgba(223,215,255,0.8), rgba(247,243,255,0.9)); }
       .hero-content { width: auto; margin: 0; padding: 60px 25px 82px; }
       .hero h1 { max-width: 400px; font-size: clamp(57px, 15vw, 82px); }
       .hero-copy { max-width: 330px; font-size: 13px; }
       .hero-note { right: 20px; bottom: 19px; font-size: 8px; }
       .values { grid-template-columns: 1fr; padding: 7px 22px; }
       .value-item { justify-content: flex-start; min-height: 48px; padding: 8px 0; }
-      .value-item + .value-item { border-top: 1px solid rgba(217,208,255,0.25); border-left: 0; }
+      .value-item + .value-item { border-top: 1px solid rgba(130, 112, 199, 0.18); border-left: 0; }
       .shop-section { padding: 66px 18px 74px; }
       .section-heading { display: block; margin-bottom: 25px; }
       .section-description { margin-top: 12px; }
@@ -414,8 +419,8 @@
     </section>
 
     <section class="values" aria-label="Our commitments">
-      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-8-4.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.6-8 11-8 11Z"/></svg><span>Clinically thoughtful</span></div>
-      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.4 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5.1 7.5-9.5V6L12 3Z"/><path d="m9.5 12 1.7 1.7 3.3-3.9"/></svg><span>Clean formulas</span></div>
+      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-8-4.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.6-8 11-8 11Z"/><path d="M9 10.5 11.2 12.8 15 8.7"/></svg><span>Clean formulas</span></div>
+      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.4 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5.1 7.5-9.5V6L12 3Z"/><path d="m9.8 11.8 1.3 1.3 3.2-3.6"/></svg><span>Derm-approved</span></div>
       <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h16l-1 12H5L4 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2M9 13h6"/></svg><span>Thoughtful packaging</span></div>
     </section>
 
@@ -456,7 +461,7 @@
   <dialog class="bag-dialog" id="bagDialog" aria-labelledby="bagTitle">
     <div class="bag-header">
       <h2 id="bagTitle">Your bag <span id="bagTitleCount">(0)</span></h2>
-      <button class="close-button" id="closeBag" type="button" aria-label="Close shopping bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
+      <button class="close-button" id="closeBag" type="button" aria-label="Close shopping bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
     <div class="bag-items" id="bagItems"></div>
     <div class="bag-footer"><div class="bag-subtotal"><span>Subtotal</span><span id="bagSubtotal">$0.00</span></div><button class="checkout-button" id="checkoutButton" type="button">Continue to checkout</button></div>
@@ -465,13 +470,13 @@
 
   <script>
     const products = [
-      { id: "cloud-cleanser", name: "Cloud Nine Cleanser", category: "Skincare", type: "skincare", detail: "A soft reset for all skin types", price: 24, tag: "Best seller", image: "photo-1608248543803-ba4f8c70ae0b" },
+      { id: "cloud-cleanser", name: "Cloud Nine Cleanser", category: "Skincare", type: "skincare", detail: "A soft reset for all skin types", price: 24, tag: "Best seller", image: "photo-16082485[...].com" },
       { id: "daily-dew", name: "Daily Dew Serum", category: "Skincare", type: "skincare", detail: "Hydration that feels like nothing", price: 38, tag: "New", image: "photo-1522335789203-aabd1fc54bc9" },
       { id: "soft-focus", name: "Soft Focus Tint", category: "Makeup", type: "makeup", detail: "Your skin, just a little more you", price: 32, tag: "Fan favorite", image: "photo-1524504388940-b1c1722653e1" },
-      { id: "sun-day", name: "Sun Day SPF 30", category: "Skincare", type: "skincare", detail: "Everyday protection, zero fuss", price: 29, tag: "Daily essential", image: "photo-1515377905703-c4788e51af15" },
+      { id: "sun-day", name: "Sun Day SPF 30", category: "Skincare", type: "skincare", detail: "Everyday protection, zero fuss", price: 29, tag: "Daily essential", image: "photo-1515377905703-cfc1e72c9a84" },
       { id: "lip-tint", name: "Little Kiss Lip Tint", category: "Makeup", type: "makeup", detail: "A soft wash of just-bitten color", price: 18, tag: "", image: "photo-1522335789203-aabd1fc54bc9" },
       { id: "body-cloud", name: "Body Cloud Cream", category: "Body", type: "body", detail: "A long drink for thirsty skin", price: 34, tag: "", image: "photo-1522335789203-aabd1fc54bc9" },
-      { id: "night-shift", name: "Night Shift Oil", category: "Skincare", type: "skincare", detail: "A slow-down ritual in a bottle", price: 42, tag: "Night ritual", image: "photo-1515377905703-c4788e51af15" },
+      { id: "night-shift", name: "Night Shift Oil", category: "Skincare", type: "skincare", detail: "A slow-down ritual in a bottle", price: 42, tag: "Night ritual", image: "photo-1515377905703-cfc1e72c9a84" },
       { id: "cheeky", name: "Cheeky Cream Blush", category: "Makeup", type: "makeup", detail: "A little color goes a long way", price: 22, tag: "", image: "photo-1524504388940-b1c1722653e1" }
     ];
 
@@ -523,7 +528,7 @@
             <p class="product-category">${product.category}</p>
             <div class="product-title-row"><h3 class="product-title">${product.name}</h3><span class="product-price">${formatPrice(product.price)}</span></div>
             <p class="product-detail">${product.detail}</p>
-            <button class="add-button" type="button" data-add="${product.id}"><span>Add to bag</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="add-button" type="button" data-add="${product.id}"><span>Add to bag</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
           </div>
         </article>
       `).join("");
@@ -539,7 +544,7 @@
       document.querySelector("#bagSubtotal").textContent = formatPrice(subtotal);
       bagItems.innerHTML = entries.length ? entries.map(([id, quantity]) => {
         const product = products.find((item) => item.id === id);
-        return `<article class="bag-item"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=160&q=70" alt=""><div><h3>${product.name}</h3><p>Qty ${quantity}</p></div><div class="bag-item-price">${formatPrice(product.price * quantity)}</div></article>`;
+        return `<article class="bag-item"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=160&q=70" alt=""><div><h3>${product.name}</h3><p>Qty ${quantity}</p></div><span class="bag-item-price">${formatPrice(product.price * quantity)}</span></article>`;
       }).join("") : '<p class="bag-empty">Your bag is taking a little breather.</p>';
     }
 
