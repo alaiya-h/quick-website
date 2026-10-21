@@ -12,15 +12,18 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #19241f;
-      --muted: #707872;
-      --paper: #f8f8f4;
+      --ink: #1f2430;
+      --muted: #5f6472;
+      --paper: #f5f1ff;
+      --paper-strong: #efe8ff;
+      --surface: rgba(255, 255, 255, 0.76);
       --white: #fff;
       --green: #214f3d;
       --green-dark: #183b2e;
-      --lime: #d9ef83;
+      --lavender: #d9d0ff;
+      --lavender-deep: #b9a9ff;
       --coral: #ef6b50;
-      --line: #e7e9e2;
+      --line: #eae1ff;
       --serif: "Playfair Display", Georgia, serif;
       --sans: "DM Sans", sans-serif;
     }
@@ -29,12 +32,12 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--paper);
+      background: linear-gradient(180deg, #f8f4ff 0%, #f2eefc 100%);
       color: var(--ink);
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
     }
-    button, input { font: inherit; }
+    button, input, select { font: inherit; }
     button { color: inherit; }
     a { color: inherit; text-decoration: none; }
 
@@ -44,7 +47,7 @@
       justify-content: center;
       min-height: 34px;
       padding: 7px 16px;
-      background: var(--green-dark);
+      background: linear-gradient(90deg, #1d2f3d 0%, #392d4b 100%);
       color: #fff;
       text-align: center;
       font-size: 10px;
@@ -60,7 +63,9 @@
       align-items: center;
       min-height: 72px;
       padding: 0 5.5%;
-      background: var(--paper);
+      background: rgba(255,255,255,0.48);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(186, 169, 255, 0.3);
     }
     .nav-links, .header-actions { display: flex; align-items: center; gap: 27px; }
     .nav-links a, .header-actions button { font-size: 12px; font-weight: 500; }
@@ -86,7 +91,7 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: var(--lime);
+      background: var(--lavender);
       font-size: 10px;
       font-weight: 700;
     }
@@ -113,6 +118,7 @@
       isolation: isolate;
       background: #4a5c4a url("https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=2200&q=85") center 43% / cover no-repeat;
       color: #fff;
+      border-radius: 0 0 32px 32px;
     }
     .hero::before {
       position: absolute;
@@ -142,21 +148,23 @@
       gap: 13px;
       min-height: 49px;
       padding: 0 22px;
-      border: 1px solid var(--lime);
-      background: var(--lime);
+      border: 1px solid var(--lavender-deep);
+      background: var(--lavender);
       color: var(--ink);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .06em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+      border-radius: 999px;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 10px 25px rgba(145, 120, 255, 0.18);
     }
-    .button-primary:hover { transform: translateY(-2px); border-color: #e8f5bf; background: #e8f5bf; }
+    .button-primary:hover { transform: translateY(-2px); border-color: #c9bdfd; background: #e0d7ff; box-shadow: 0 14px 28px rgba(145, 120, 255, 0.22); }
     .button-primary svg { width: 15px; height: 15px; }
     .hero-note { position: absolute; right: 5.5%; bottom: 32px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
 
-    .values { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); background: #fff; }
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.45); }
     .value-item { display: flex; align-items: center; justify-content: center; gap: 11px; min-height: 76px; padding: 12px; font-size: 11px; font-weight: 600; }
     .value-item + .value-item { border-left: 1px solid var(--line); }
     .value-item svg { width: 17px; height: 17px; color: var(--green); }
@@ -176,18 +184,19 @@
       color: var(--muted);
       font-size: 11px;
       cursor: pointer;
-      transition: background .2s ease, color .2s ease, border-color .2s ease;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
     }
     .filter-button:hover { color: var(--green); }
     .filter-button[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: #fff; }
     .sort-label { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 11px; white-space: nowrap; }
     .sort-label select { padding: 7px 19px 7px 4px; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
     .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 27px 17px; }
-    .product-card { min-width: 0; animation: rise-in .45s ease both; }
-    .product-image-wrap { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: #e8e9e2; }
+    .product-card { min-width: 0; animation: rise-in .45s ease both; border-radius: 22px; overflow: hidden; background: rgba(255,255,255,0.58); padding-bottom: 8px; }
+    .product-image-wrap { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: #e8e9e2; border-radius: 22px 22px 0 0; }
     .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
     .product-card:hover .product-image { transform: scale(1.045); }
-    .product-tag { position: absolute; top: 12px; left: 12px; padding: 7px 9px; background: var(--lime); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .product-tag { position: absolute; top: 12px; left: 12px; padding: 7px 9px; background: var(--lavender); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 999px; }
     .favorite-button {
       position: absolute;
       top: 9px;
@@ -205,29 +214,29 @@
     .favorite-button:hover { transform: scale(1.08); }
     .favorite-button[aria-pressed="true"] { color: var(--coral); }
     .favorite-button svg { width: 17px; height: 17px; }
-    .product-info { padding: 13px 1px 0; }
+    .product-info { padding: 13px 12px 0; }
     .product-category { margin: 0 0 5px; color: var(--muted); font-size: 9px; letter-spacing: .11em; text-transform: uppercase; }
     .product-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 9px; }
     .product-title { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.4; }
     .product-price { flex: 0 0 auto; font-size: 12px; font-weight: 600; }
     .product-detail { margin: 5px 0 11px; color: var(--muted); font-size: 10px; line-height: 1.5; }
-    .add-button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 38px; padding: 0 11px; border: 1px solid #d9ddd5; background: transparent; font-size: 10px; font-weight: 600; cursor: pointer; transition: border-color .2s ease, background .2s ease, color .2s ease; }
-    .add-button:hover { border-color: var(--green); background: var(--green); color: #fff; }
+    .add-button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 38px; padding: 0 11px; border: 1px solid #d9ddd5; background: transparent; font-size: 11px; font-weight: 600; letter-spacing: .03em; cursor: pointer; border-radius: 999px; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease; }
+    .add-button:hover { border-color: var(--green); background: var(--green); color: #fff; transform: translateY(-1px); }
     .add-button svg { width: 14px; height: 14px; }
     .empty-state { grid-column: 1 / -1; padding: 65px 15px; color: var(--muted); text-align: center; }
 
-    .newsletter { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; padding: 51px 9%; background: var(--green); color: #fff; }
+    .newsletter { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; padding: 51px 9%; background: linear-gradient(135deg, #e7dcff 0%, #d9d1ff 100%); color: var(--green-dark); border-radius: 28px 28px 0 0; }
     .newsletter h2 { margin: 0 0 8px; font-family: var(--serif); font-size: 34px; font-weight: 500; }
-    .newsletter p { margin: 0; color: rgba(255,255,255,.75); font-size: 11px; }
-    .newsletter-form { display: flex; width: min(380px, 38vw); border-bottom: 1px solid rgba(255,255,255,.7); }
-    .newsletter-form input { flex: 1; min-width: 0; padding: 12px 4px; border: 0; outline: 0; background: transparent; color: #fff; font-size: 11px; }
-    .newsletter-form input::placeholder { color: rgba(255,255,255,.7); }
-    .newsletter-form button { padding: 0 3px 0 13px; border: 0; background: transparent; color: var(--lime); font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; }
+    .newsletter p { margin: 0; color: rgba(24,59,46,.72); font-size: 11px; }
+    .newsletter-form { display: flex; width: min(380px, 38vw); border-bottom: 1px solid rgba(24,59,46,.4); border-radius: 999px; }
+    .newsletter-form input { flex: 1; min-width: 0; padding: 12px 14px; border: 0; outline: 0; background: transparent; color: var(--green-dark); font-size: 11px; border-radius: 999px; }
+    .newsletter-form input::placeholder { color: rgba(24,59,46,.7); }
+    .newsletter-form button { padding: 0 3px 0 13px; border: 0; background: transparent; color: var(--green-dark); font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; }
     .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 27px 7%; color: var(--muted); font-size: 10px; }
     .footer-brand { color: var(--ink); font-family: var(--serif); font-size: 22px; }
     .footer-links { display: flex; gap: 19px; }
 
-    .bag-dialog { position: fixed; inset: 0 0 0 auto; width: min(440px, 100%); max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 26px; border: 0; background: var(--paper); color: var(--ink); box-shadow: -15px 0 55px rgba(13, 30, 20, .15); }
+    .bag-dialog { position: fixed; inset: 0 0 0 auto; width: min(440px, 100%); max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 26px; border: 0; background: var(--paper); color: var(--ink); box-shadow: -10px 0 35px rgba(62, 48, 73, 0.15); border-radius: 26px 0 0 26px; }
     .bag-dialog[open] { animation: slide-in .25s ease both; }
     .bag-dialog::backdrop { background: rgba(17, 29, 23, .42); }
     .bag-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 19px; border-bottom: 1px solid var(--line); }
@@ -237,14 +246,14 @@
     .bag-items { display: grid; gap: 16px; max-height: calc(100dvh - 220px); overflow: auto; padding: 20px 0; }
     .bag-empty { padding: 26px 0; color: var(--muted); font-size: 13px; }
     .bag-item { display: grid; grid-template-columns: 70px 1fr auto; align-items: center; gap: 13px; }
-    .bag-item img { width: 70px; height: 82px; object-fit: cover; }
+    .bag-item img { width: 70px; height: 82px; object-fit: cover; border-radius: 14px; }
     .bag-item h3 { margin: 0 0 5px; font-size: 12px; }
     .bag-item p { margin: 0; color: var(--muted); font-size: 10px; }
     .bag-item-price { align-self: start; padding-top: 2px; font-size: 11px; font-weight: 600; }
     .bag-footer { position: absolute; right: 26px; bottom: 26px; left: 26px; }
     .bag-subtotal { display: flex; justify-content: space-between; padding: 16px 0; border-top: 1px solid var(--line); font-size: 12px; font-weight: 600; }
-    .checkout-button { width: 100%; min-height: 49px; border: 0; background: var(--green); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
-    .toast { position: fixed; z-index: 5; right: 22px; bottom: 22px; padding: 13px 17px; background: var(--ink); color: #fff; font-size: 11px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease; }
+    .checkout-button { width: 100%; min-height: 49px; border: 0; background: var(--green); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; border-radius: 999px; }
+    .toast { position: fixed; z-index: 5; right: 22px; bottom: 22px; padding: 13px 17px; background: var(--ink); color: #fff; font-size: 11px; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease; border-radius: 999px; }
     .toast.is-visible { opacity: 1; transform: translateY(0); }
 
     @keyframes rise-in { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
@@ -334,9 +343,9 @@
     </section>
 
     <section class="values" aria-label="Our commitments">
-      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-8-4.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.6-8 11-8 11Z"/><path d="M8.5 12h7"/></svg>Thoughtful ingredients, always</div>
-      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.4 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5.1 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>Never tested on our friends</div>
-      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h16l-1 12H5L4 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2M9 13h6"/></svg>Made for every kind of day</div>
+      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s-8-4.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.6-8 11-8 11Z"/></svg><span>Clinically thoughtful</span></div>
+      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.4 3.2 7.6 7.5 9.5 4.3-1.9 7.5-5.1 7.5-9.5V6L12 3Z"/><path d="m9.5 12 1.7 1.7 3.3-3.9"/></svg><span>Clean formulas</span></div>
+      <div class="value-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h16l-1 12H5L4 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2M9 13h6"/></svg><span>Thoughtful packaging</span></div>
     </section>
 
     <section class="shop-section" id="shop" aria-labelledby="shopTitle">
@@ -376,7 +385,7 @@
   <dialog class="bag-dialog" id="bagDialog" aria-labelledby="bagTitle">
     <div class="bag-header">
       <h2 id="bagTitle">Your bag <span id="bagTitleCount">(0)</span></h2>
-      <button class="close-button" id="closeBag" type="button" aria-label="Close shopping bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      <button class="close-button" id="closeBag" type="button" aria-label="Close shopping bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg></button>
     </div>
     <div class="bag-items" id="bagItems"></div>
     <div class="bag-footer"><div class="bag-subtotal"><span>Subtotal</span><span id="bagSubtotal">$0.00</span></div><button class="checkout-button" id="checkoutButton" type="button">Continue to checkout</button></div>
@@ -386,13 +395,13 @@
   <script>
     const products = [
       { id: "cloud-cleanser", name: "Cloud Nine Cleanser", category: "Skincare", type: "skincare", detail: "A soft reset for all skin types", price: 24, tag: "Best seller", image: "photo-1608248543803-ba4f8c70ae0b" },
-      { id: "daily-dew", name: "Daily Dew Serum", category: "Skincare", type: "skincare", detail: "Hydration that feels like nothing", price: 38, tag: "New", image: "photo-1601049541289-9b1b7bbbfe19" },
-      { id: "soft-focus", name: "Soft Focus Tint", category: "Makeup", type: "makeup", detail: "Your skin, just a little more you", price: 32, tag: "Fan favorite", image: "photo-1596462502278-27bfdc403348" },
-      { id: "sun-day", name: "Sun Day SPF 30", category: "Skincare", type: "skincare", detail: "Everyday protection, zero fuss", price: 29, tag: "Daily essential", image: "photo-1611930022073-b7a4ba5fcccd" },
-      { id: "lip-tint", name: "Little Kiss Lip Tint", category: "Makeup", type: "makeup", detail: "A soft wash of just-bitten color", price: 18, tag: "", image: "photo-1612817288484-6f916006741a" },
-      { id: "body-cloud", name: "Body Cloud Cream", category: "Body", type: "body", detail: "A long drink for thirsty skin", price: 34, tag: "", image: "photo-1608248543803-ba4f8c70ae0b" },
-      { id: "night-shift", name: "Night Shift Oil", category: "Skincare", type: "skincare", detail: "A slow-down ritual in a bottle", price: 42, tag: "Night ritual", image: "photo-1611930022073-b7a4ba5fcccd" },
-      { id: "cheeky", name: "Cheeky Cream Blush", category: "Makeup", type: "makeup", detail: "A little color goes a long way", price: 22, tag: "", image: "photo-1596462502278-27bfdc403348" }
+      { id: "daily-dew", name: "Daily Dew Serum", category: "Skincare", type: "skincare", detail: "Hydration that feels like nothing", price: 38, tag: "New", image: "photo-1522335789203-aabd1fc54bc9" },
+      { id: "soft-focus", name: "Soft Focus Tint", category: "Makeup", type: "makeup", detail: "Your skin, just a little more you", price: 32, tag: "Fan favorite", image: "photo-1524504388940-b1c1722653e1" },
+      { id: "sun-day", name: "Sun Day SPF 30", category: "Skincare", type: "skincare", detail: "Everyday protection, zero fuss", price: 29, tag: "Daily essential", image: "photo-1515377905703-c4788e51af15" },
+      { id: "lip-tint", name: "Little Kiss Lip Tint", category: "Makeup", type: "makeup", detail: "A soft wash of just-bitten color", price: 18, tag: "", image: "photo-1522335789203-aabd1fc54bc9" },
+      { id: "body-cloud", name: "Body Cloud Cream", category: "Body", type: "body", detail: "A long drink for thirsty skin", price: 34, tag: "", image: "photo-1522335789203-aabd1fc54bc9" },
+      { id: "night-shift", name: "Night Shift Oil", category: "Skincare", type: "skincare", detail: "A slow-down ritual in a bottle", price: 42, tag: "Night ritual", image: "photo-1515377905703-c4788e51af15" },
+      { id: "cheeky", name: "Cheeky Cream Blush", category: "Makeup", type: "makeup", detail: "A little color goes a long way", price: 22, tag: "", image: "photo-1524504388940-b1c1722653e1" }
     ];
 
     const productGrid = document.querySelector("#productGrid");
@@ -434,7 +443,7 @@
             <p class="product-category">${product.category}</p>
             <div class="product-title-row"><h3 class="product-title">${product.name}</h3><span class="product-price">${formatPrice(product.price)}</span></div>
             <p class="product-detail">${product.detail}</p>
-            <button class="add-button" type="button" data-add="${product.id}"><span>Add to bag</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14m-7-7h14"/></svg></button>
+            <button class="add-button" type="button" data-add="${product.id}"><span>Add to bag</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
           </div>
         </article>
       `).join("");
@@ -450,7 +459,7 @@
       document.querySelector("#bagSubtotal").textContent = formatPrice(subtotal);
       bagItems.innerHTML = entries.length ? entries.map(([id, quantity]) => {
         const product = products.find((item) => item.id === id);
-        return `<article class="bag-item"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=160&q=70" alt=""><div><h3>${product.name}</h3><p>Qty ${quantity}</p></div><span class="bag-item-price">${formatPrice(product.price * quantity)}</span></article>`;
+        return `<article class="bag-item"><img src="https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=160&q=70" alt=""><div><h3>${product.name}</h3><p>Qty ${quantity}</p></div><div class="bag-item-price">${formatPrice(product.price * quantity)}</div></article>`;
       }).join("") : '<p class="bag-empty">Your bag is taking a little breather.</p>';
     }
 
